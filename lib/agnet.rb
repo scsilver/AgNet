@@ -1,5 +1,8 @@
 require "agnet/version"
 
-module Agnet
+class Agnet
+  def new
+    @agnet = 1
+  end
   # Your code goes here...
 end
