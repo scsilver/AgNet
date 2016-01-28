@@ -4,11 +4,21 @@ describe Agnet do
   it 'has a version number' do
     expect(Agnet::VERSION).not_to be nil
   end
-  describe 'private instance methods' do
-    subject { Agnet.new(4, 16) }
 
+  describe 'public instance methods' do
+    subject { Agnet.new(4, 16, 10) }
+
+    let(:input) do
+      [input_activation, weights_hidden, weights_output,
+       input_nodes, hidden_nodes, output_nodes]
+    end
+
+    let(:output) { subject.process(input) }
     context 'responds to its methods' do
+      it { expect(subject).to respond_to(:feed_forward) }
       it { expect(subject).to respond_to(:set_initial_weights) }
+      it { expect(subject).to respond_to(:set_initial_factors) }
+
     end
 
     context 'executes methods correctly' do
@@ -39,24 +49,6 @@ describe Agnet do
         it 'mulitplys output initial factor to hidden weight matrix cales' do
         end
       end
-    end
-  end
-
-  describe 'public instance methods' do
-    subject { Agnet.new }
-
-    let(:input) do
-      [input_activation, weights_hidden, weights_output,
-       input_nodes, hidden_nodes, output_nodes]
-    end
-
-    let(:output) { subject.process(input) }
-    context 'responds to its methods' do
-      it { expect(subject).to respond_to(:feed_forward) }
-      it { expect(subject).to respond_to(:set_initial_weights) }
-    end
-
-    context 'executes methods correctly' do
       context '#feed_forward' do
         it 'calcs weighted sum for each node in hdn layer with hdn weights' do
         end
