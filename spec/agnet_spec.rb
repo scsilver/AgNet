@@ -24,11 +24,11 @@ describe Agnet do
     context 'executes methods correctly' do
       context '#set_initial_factorss' do
         it 'has array of initial factors for hidden and output weight matrix' do
-          expects(subject.set_initial_factors.size).to eq(2)
+          expect(subject.set_initial_factors.size).to eq(2)
         end
         it 'has array values according to function  1 / inputsize^0.5' do
-          expects(subject.set_initial_factors[0]).to eq(0.5)
-          expects(subject.set_initial_factors[1]).to eq(0.25)
+          expect(subject.set_initial_factors[0]).to eq(0.5)
+          expect(subject.set_initial_factors[1]).to eq(0.25)
         end
       end
       context '#set_initial_weights' do
