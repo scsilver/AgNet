@@ -11,6 +11,7 @@ class Agnet
     @out_nodes = output_nodes
     @function = function
     @input_activation = input_activation
+    @label = 3
     @input_bias = input_bias
     @hidden_bias = hidden_bias
     @bits = bits
@@ -114,4 +115,21 @@ class Agnet
     activation_function(output_layer_weighted_sum)
   end
 
+  def guess(outputs)
+    outputs.find_index(outputs.max(1)[0])
+  end
+
+  def vectorize_output_layer
+    Vector.elements(output_layer_activation)
+  end
+
+  def label_array
+    y = Array.new(10) { 0 }
+    y[@label] = 1
+    y
+  end
+
+  def output_error
+    vectorize_output_layer - Vector.elements(label_array)
+  end
 end

@@ -166,19 +166,72 @@ describe Agnet do
           subject.set_initial_weights
           subject.normalize_input_activation
 
-          subject.set_initial_weights
-          subject.normalize_input_activation
-
           expect(subject.output_layer_activation)
             .to eq(subject.activation_function(subject.output_layer_weighted_sum))
         end
       end
-      context '#feed_forward' do
-        it 'activates each node in hidden layer' do
+      context '#guess' do
+        it 'returns the index of the max value in an array' do
+          array = [2, 4.3, 6.32, 1]
+
+          expect(subject.guess(array))
+            .to eq(2)
         end
-        it 'cals weighted sum for each node in outpt layer with otpt weights' do
+      end
+      context '#vectorize_output_layer' do
+        it 'returns a vector' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.vectorize_output_layer).to be_a(Vector)
         end
-        it 'activates each node in output layer' do
+        it 'the initial values do not change from array to vector ' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.vectorize_output_layer[0])
+            .to eq(subject.output_layer_activation[0])
+        end
+        it 'adds bias to end of vector' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.vectorize_output_layer.size)
+            .to eq(subject.output_layer_activation.size)
+        end
+      end
+      context '#label_array' do
+        it 'returns an array' do
+          expect(subject.label_array).to be_a(Array)
+        end
+        it 'has a size of output size' do
+          expect(subject.label_array.size).to eq(@output_nodes)
+        end
+        it 'has 1 max that equals 1' do
+          expect(subject.label_array.count(1)).to eq(1)
+        end
+        it 'has other values equal 0' do
+          expect(subject.label_array.count(0)).to eq(9)
+        end
+      end
+      context '#output_error' do
+        it 'returns an array' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.output_error).to be_a(Vector)
+        end
+        it 'has a size of output size' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.output_error.size).to eq(@output_nodes)
+        end
+        it 'returns the difference between label and output as vector' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.output_error).to eq(subject.vectorize_output_layer - Vector.elements(subject.label_array))
         end
       end
     end
