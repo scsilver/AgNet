@@ -234,6 +234,44 @@ describe Agnet do
           expect(subject.output_error).to eq(subject.vectorize_output_layer - Vector.elements(subject.label_array))
         end
       end
+      context '#back_prop_output' do
+        it 'returns an array' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.back_prop_output).to be_a(Array)
+        end
+        it 'back propogates output error' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.back_prop_output[0])
+            .to eq(subject.scale_initial_weights[1]
+            .column(0).inner_product(subject.output_error) * subject.hidden_layer_activation[0])
+        end
+      end
+      context '#output_weights_change' do
+        it 'returns a matrix' do
+          expect(subject.output_weights_change).to be_a(Matrix)
+        end
+        it 'matrix has output_nodes # of rows' do
+          expect(subject.back_prop_output.row_count).to eq(@output_nodes)
+        end
+        it 'matrix has hidden_nodes + 1  # of columns' do
+          expect(subject.back_prop_output.column_count).to eq(@hidden_nodes + 1)
+        end
+      end
+      context '#hidden_weights_change' do
+        it 'returns a matrix' do
+          expect(subject.output_weights_change).to be_a(Matrix)
+        end
+        it 'matrix has hidden_nodes # of rows' do
+          expect(subject.back_prop_output.row_count).to eq(@hidden_nodes)
+        end
+        it 'matrix has input_nodes + 1  # of columns' do
+          expect(subject.back_prop_output.column_count).to eq(@input_nodes + 1)
+        end
+      end
     end
   end
 end

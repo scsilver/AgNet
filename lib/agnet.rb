@@ -132,4 +132,12 @@ class Agnet
   def output_error
     vectorize_output_layer - Vector.elements(label_array)
   end
+
+  def back_prop_output
+    h_e = []
+    @out_nodes.times do |w|
+      h_e << (scale_initial_weights[1].column(w).inner_product(output_error) * hidden_layer_activation[w])
+    end
+    h_e
+  end
 end
