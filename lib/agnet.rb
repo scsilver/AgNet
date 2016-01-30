@@ -15,13 +15,15 @@ class Agnet
     @input_bias = input_bias
     @hidden_bias = hidden_bias
     @bits = bits
+    @lr = 0.5
+    @weights = Array.new(2)
   end
 
   def feed_forward
   end
 
   def scale_initial_weights
-    set_initial_factors.map.with_index { |a, i| a * @initial_weights[i] }
+    @weights = set_initial_factors.map.with_index { |a, i| a * initial_weights[i] }
   end
 
   def set_initial_factors
@@ -55,6 +57,11 @@ class Agnet
     @initial_weights = [h_w]
     @initial_weights << o_w
   end
+
+  def initial_weights
+      @initial_weights
+  end
+
 
   def normalize_input_activation
     array = Array.new(@in_nodes + 1)
@@ -139,5 +146,54 @@ class Agnet
       h_e << (scale_initial_weights[1].column(w).inner_product(output_error) * hidden_layer_activation[w])
     end
     h_e
+  end
+
+  def output_weights_change
+    dWo = []
+    @out_nodes.times do |l|
+      if l == 0
+        r = []
+        (@hdn_nodes + 1).times do |o|
+          r << output_error[l] * vectorize_hidden_layer[o]
+        end
+        dWo = Vector.elements(r).covector
+      else
+        r = []
+        (@hdn_nodes + 1).times do |o|
+          r << output_error[l] * vectorize_hidden_layer[o]
+        end
+        dWv = Vector.elements(r).covector
+        dWo = dWo.vstack(dWv)
+      end
+    end
+    dWo
+  end
+
+  def hidden_weights_change
+    dWo = []
+    @hdn_nodes.times do |l|
+      if l == 0
+        r = []
+        (@in_nodes + 1).times do |o|
+          r << vectorize_hidden_layer[l] * normalize_input_activation[o]
+        end
+        dWo = Vector.elements(r).covector
+      else
+        r = []
+        (@in_nodes + 1).times do |o|
+          r << vectorize_hidden_layer[l] * normalize_input_activation[o]
+        end
+        dWv = Vector.elements(r).covector
+        dWo = dWo.vstack(dWv)
+      end
+    end
+    dWo
+  end
+
+  def weights_change
+    @weights[0] = (@weights[0] - hidden_weights_change * @lr*0.1)
+    @weights[1] = (@weights[1] - output_weights_change * @lr)
+    binding.pry
+    @weights
   end
 end

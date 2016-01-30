@@ -10,10 +10,10 @@ describe Agnet do
       @input_nodes = 4
       @hidden_nodes = 16
       @output_nodes = 10
-      @input_activation = [24, 155, 255, 0]
+      @input_activation = [25.0, 151.0, 253.0, 0.0]
       @input_bias = 1.0
       @hidden_bias = 1.0
-      @bits = 255
+      @bits = 255.0
       @function = 'sigmax'
 
     end
@@ -60,18 +60,16 @@ describe Agnet do
       end
       context '#scale_initial_weights' do
         it 'mulitplys hidden initial factor to hidden weight matrix calcs' do
-          init_weights = subject.set_initial_weights
-          init_factors = subject.set_initial_factors
+          subject.set_initial_weights
 
-          expect(subject.scale_initial_weights[0][0, 0])
-            .to eq(init_weights[0][0, 0] * init_factors[0])
+          expect(subject.scale_initial_weights[0])
+            .to eq( subject.initial_weights[0] *  subject.set_initial_factors[0])
         end
         it 'mulitplys output initial factor to ouput weight matrix calcs' do
-          init_weights = subject.set_initial_weights
-          init_factors = subject.set_initial_factors
+          subject.set_initial_weights
 
-          expect(subject.scale_initial_weights[1][0, 0])
-            .to eq(init_weights[1][0, 0] * init_factors[1])
+          expect(subject.scale_initial_weights[1])
+            .to eq(subject.initial_weights[1]* subject.set_initial_factors[1])
         end
       end
       context '#normalize_input_activation' do
@@ -90,11 +88,10 @@ describe Agnet do
       context '#hidden_layer_weighted_sum' do
         it 'calcs weight sum vector for nodes in hdn layer with hdn weights' do
           subject.set_initial_weights
-          subject.normalize_input_activation
 
           expect(subject.hidden_layer_weighted_sum[0])
             .to eq(subject.scale_initial_weights[0]
-            .row(0).inner_product(@input_activation.map{ |r| r / 255}))
+            .row(0).inner_product(subject.normalize_input_activation))
         end
         it 'returns array of size hidden nodes' do
           subject.set_initial_weights
@@ -106,6 +103,7 @@ describe Agnet do
       context '#hidden_layer_activation' do
         it 'applys activation function to each hidden node value' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.hidden_layer_activation)
@@ -124,12 +122,14 @@ describe Agnet do
       context '#vectorize_hidden_layer' do
         it 'returns a vector' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.vectorize_hidden_layer).to be_a(Vector)
         end
         it 'the initial values do not change from array to vector ' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.vectorize_hidden_layer[0])
@@ -137,6 +137,7 @@ describe Agnet do
         end
         it 'adds bias to end of vector' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.vectorize_hidden_layer.size)
@@ -146,6 +147,7 @@ describe Agnet do
       context '#output_layer_weighted_sum' do
         it 'calcs weight sum vector for nodes in hdn layer with hdn weights' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.output_layer_weighted_sum[0])
@@ -154,6 +156,7 @@ describe Agnet do
         end
         it 'returns array of size output nodes' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.output_layer_weighted_sum.size)
@@ -162,8 +165,8 @@ describe Agnet do
       end
       context '#output_layer_activation' do
         it 'applys activation function to each output node value' do
-
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.output_layer_activation)
@@ -250,26 +253,97 @@ describe Agnet do
             .column(0).inner_product(subject.output_error) * subject.hidden_layer_activation[0])
         end
       end
-      context '#output_weights_change' do
+      context '#hidden_weights_delta' do
         it 'returns a matrix' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.hidden_weights_change).to be_a(Matrix)
+        end
+        it 'matrix has hidden_nodes # of rows' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.hidden_weights_change.row_count).to eq(@hidden_nodes)
+        end
+        it 'matrix has input_nodes + 1  # of columns' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.hidden_weights_change.column_count).to eq(@input_nodes + 1)
+        end
+      end
+      context '#output_weights_delta' do
+        it 'returns a matrix' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
           expect(subject.output_weights_change).to be_a(Matrix)
         end
         it 'matrix has output_nodes # of rows' do
-          expect(subject.back_prop_output.row_count).to eq(@output_nodes)
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.output_weights_change.row_count).to eq(@output_nodes)
         end
         it 'matrix has hidden_nodes + 1  # of columns' do
-          expect(subject.back_prop_output.column_count).to eq(@hidden_nodes + 1)
+          subject.set_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.output_weights_change.column_count).to eq(@hidden_nodes + 1)
         end
       end
-      context '#hidden_weights_change' do
-        it 'returns a matrix' do
-          expect(subject.output_weights_change).to be_a(Matrix)
+      context '#weights_change' do
+        it 'returns an array' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change).to be_a(Array)
         end
-        it 'matrix has hidden_nodes # of rows' do
-          expect(subject.back_prop_output.row_count).to eq(@hidden_nodes)
+        it 'has first value in array that is a matrix' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[0]).to be_a(Matrix)
+
         end
-        it 'matrix has input_nodes + 1  # of columns' do
-          expect(subject.back_prop_output.column_count).to eq(@input_nodes + 1)
+        it  'has first value in array that has output_nodes # of rows' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[0].row_count).to eq(@hidden_nodes)
+        end
+        it 'has first value in array that has hidden_nodes + 1  # of columns' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[0].column_count).to eq(@input_nodes + 1)
+        end
+        it 'has second value in array that is a matrix' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[1]).to be_a(Matrix)
+
+        end
+        it  'has second value in array that has output_nodes # of rows' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[1].row_count).to eq(@output_nodes)
+        end
+        it 'has second value in array that has hidden_nodes + 1  # of columns' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
+          expect(subject.weights_change[1].column_count).to eq(@hidden_nodes + 1)
         end
       end
     end
