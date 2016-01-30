@@ -49,6 +49,13 @@ describe Agnet do
           expect(weights).not_to eq(subject.weights)
         end
       end
+      context '#classify' do
+        it 'returns guess for data' do
+          weights = subject.weights
+          subject.train
+          expect(weights).not_to eq(subject.weights)
+        end
+      end
       context '#set_initial_factors' do
         it 'sets array of initial factors for hdn and output weight matrix' do
           expect(subject.set_initial_factors.size).to eq(2)

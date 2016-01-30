@@ -22,6 +22,7 @@ class Agnet
     @label = 3
 
   end
+
   def train
     load_data
     set_initial_weights

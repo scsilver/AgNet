@@ -1,8 +1,14 @@
 # Agnet
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/agnet`. To experiment with that code, run `bin/console` for an interactive prompt.
+2 Layer Feed forward Neural Network.
 
-TODO: Delete this and the text above, and describe your gem
+TODO:
+1. Flesh out classifying and training methods
+2. Add training status printing method
+3. Add classifying status printing method
+4. Make certain methods accessible to user for gem
+5. Documentation
+6. Mnist dataset example
 
 ## Installation
 
@@ -22,7 +28,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO:
+1. Documentation
 
 ## Development
 
@@ -32,10 +39,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/agnet.
+Bug reports and pull requests are welcome on GitHub at https://github.com/scsilver/agnet.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
