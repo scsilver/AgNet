@@ -7,17 +7,19 @@ describe Agnet do
 
   describe 'public instance methods' do
     before do
-      @input_nodes = 4
+      @input_nodes = 784 #28^2
       @hidden_nodes = 16
       @output_nodes = 10
-      @input_activation = [25.0, 151.0, 253.0, 0.0]
+      @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       @input_bias = 1.0
       @hidden_bias = 1.0
       @bits = 255.0
       @function = 'sigmax'
 
+
     end
     subject { Agnet.new(@input_nodes, @hidden_nodes, @output_nodes, @function, @input_activation, @input_bias, @hidden_bias, @bits) }
+
     let(:input) do
       [input_activation, weights_hidden, weights_output,
        input_nodes, hidden_nodes, output_nodes]
@@ -25,19 +27,27 @@ describe Agnet do
 
     let(:output) { subject.process(input) }
     context 'responds to its methods' do
-      it { expect(subject).to respond_to(:feed_forward) }
       it { expect(subject).to respond_to(:set_initial_weights) }
       it { expect(subject).to respond_to(:set_initial_factors) }
     end
 
     context 'executes methods correctly' do
-      context '#set_initial_factorss' do
+      context '#load_data' do
+        it 'returns a vector' do
+          expect(subject.load_data).to be_a(Array)
+        end
+        it 'has values in range 0 to @bits -1' do
+          expect(subject.load_data[0][0]).to be_between(0, @bits).inclusive
+        end
+      end
+      context '#set_initial_factors' do
         it 'sets array of initial factors for hdn and output weight matrix' do
           expect(subject.set_initial_factors.size).to eq(2)
         end
         it 'sets array values according to function  1 / inputsize^0.5' do
-          expect(subject.set_initial_factors[0]).to eq(0.5)
-          expect(subject.set_initial_factors[1]).to eq(0.25)
+
+          expect(subject.set_initial_factors[0]).to eq(1 / @input_nodes**0.5)
+          expect(subject.set_initial_factors[1]).to eq(1 / @hidden_nodes**0.5)
         end
       end
       context '#set_initial_weights' do
@@ -240,55 +250,78 @@ describe Agnet do
       context '#back_prop_output' do
         it 'returns an array' do
           subject.set_initial_weights
+          subject.hidden_layer_activation
+          subject.output_error
+
           subject.normalize_input_activation
 
           expect(subject.back_prop_output).to be_a(Array)
         end
         it 'back propogates output error' do
           subject.set_initial_weights
-          subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
 
           expect(subject.back_prop_output[0])
             .to eq(subject.scale_initial_weights[1]
             .column(0).inner_product(subject.output_error) * subject.hidden_layer_activation[0])
         end
       end
-      context '#hidden_weights_delta' do
+      context '#hidden_weights_change' do
         it 'returns a matrix' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+
 
           expect(subject.hidden_weights_change).to be_a(Matrix)
         end
         it 'matrix has hidden_nodes # of rows' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
 
           expect(subject.hidden_weights_change.row_count).to eq(@hidden_nodes)
         end
         it 'matrix has input_nodes + 1  # of columns' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
 
           expect(subject.hidden_weights_change.column_count).to eq(@input_nodes + 1)
         end
       end
-      context '#output_weights_delta' do
+      context '#output_weights_change' do
         it 'returns a matrix' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
 
           expect(subject.output_weights_change).to be_a(Matrix)
         end
         it 'matrix has output_nodes # of rows' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
 
           expect(subject.output_weights_change.row_count).to eq(@output_nodes)
         end
         it 'matrix has hidden_nodes + 1  # of columns' do
           subject.set_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
 
           expect(subject.output_weights_change.column_count).to eq(@hidden_nodes + 1)
         end
@@ -296,52 +329,87 @@ describe Agnet do
       context '#weights_change' do
         it 'returns an array' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change).to be_a(Array)
         end
         it 'has first value in array that is a matrix' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[0]).to be_a(Matrix)
 
         end
         it  'has first value in array that has output_nodes # of rows' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[0].row_count).to eq(@hidden_nodes)
         end
         it 'has first value in array that has hidden_nodes + 1  # of columns' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[0].column_count).to eq(@input_nodes + 1)
         end
         it 'has second value in array that is a matrix' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[1]).to be_a(Matrix)
 
         end
         it  'has second value in array that has output_nodes # of rows' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[1].row_count).to eq(@output_nodes)
         end
         it 'has second value in array that has hidden_nodes + 1  # of columns' do
           subject.set_initial_weights
-          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+          subject.back_prop_output
+          subject.hidden_weights_change
+          subject.output_weights_change
+
 
           expect(subject.weights_change[1].column_count).to eq(@hidden_nodes + 1)
         end

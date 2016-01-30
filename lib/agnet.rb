@@ -17,9 +17,26 @@ class Agnet
     @bits = bits
     @lr = 0.5
     @weights = Array.new(2)
+    @training_data = []
+    @testing_data = []
+    @training_size = 100
+
   end
 
-  def feed_forward
+  def load_data
+    CSV.foreach('train.csv') do |row|
+      if @training_data.size <= @training_size
+        @training_data << row.map(&:to_i)
+        puts 'Row: ', @training_data.size
+      else
+        @testing_data << row.map(&:to_i)
+        puts 'Row: ', (@training_data.size + @testing_data.size)
+      end
+
+      break if @training_data.size + @testing_data.size == @training_size +
+      (@training_size / 5.0).to_i
+    end
+    @training_data[1]
   end
 
   def scale_initial_weights
@@ -67,7 +84,7 @@ class Agnet
     array = Array.new(@in_nodes + 1)
     array = @input_activation
     array[@in_nodes] = @input_bias
-    Vector.elements(array) / @bits
+    @normalize_input_activation = Vector.elements(array) / @bits
   end
 
   def hidden_layer_weighted_sum
@@ -79,7 +96,7 @@ class Agnet
   end
 
   def hidden_layer_activation
-    activation_function(hidden_layer_weighted_sum)
+    @hidden_layer_activation = activation_function(hidden_layer_weighted_sum)
   end
 
   def activation_function(z)
@@ -107,7 +124,7 @@ class Agnet
     array = Array.new(@hdn_nodes + 1)
     array = hidden_layer_activation
     array[@hdn_nodes] = @hidden_bias
-    Vector.elements(array)
+    @vectorize_hidden_layer = Vector.elements(array)
   end
 
   def output_layer_weighted_sum
@@ -137,15 +154,15 @@ class Agnet
   end
 
   def output_error
-    vectorize_output_layer - Vector.elements(label_array)
+    @output_error = vectorize_output_layer - Vector.elements(label_array)
   end
 
   def back_prop_output
     h_e = []
-    @out_nodes.times do |w|
-      h_e << (scale_initial_weights[1].column(w).inner_product(output_error) * hidden_layer_activation[w])
+    @hdn_nodes.times do |w|
+      h_e << (scale_initial_weights[1].column(w).inner_product(@output_error) * @hidden_layer_activation[w])
     end
-    h_e
+    @back_prop_output = h_e
   end
 
   def output_weights_change
@@ -154,19 +171,19 @@ class Agnet
       if l == 0
         r = []
         (@hdn_nodes + 1).times do |o|
-          r << output_error[l] * vectorize_hidden_layer[o]
+          r << @output_error[l] * @vectorize_hidden_layer[o]
         end
         dWo = Vector.elements(r).covector
       else
         r = []
         (@hdn_nodes + 1).times do |o|
-          r << output_error[l] * vectorize_hidden_layer[o]
+          r << @output_error[l] * @vectorize_hidden_layer[o]
         end
         dWv = Vector.elements(r).covector
         dWo = dWo.vstack(dWv)
       end
     end
-    dWo
+    @output_weights_change = dWo
   end
 
   def hidden_weights_change
@@ -175,25 +192,24 @@ class Agnet
       if l == 0
         r = []
         (@in_nodes + 1).times do |o|
-          r << vectorize_hidden_layer[l] * normalize_input_activation[o]
+          r << @back_prop_output[l] * @normalize_input_activation[o]
         end
         dWo = Vector.elements(r).covector
       else
         r = []
         (@in_nodes + 1).times do |o|
-          r << vectorize_hidden_layer[l] * normalize_input_activation[o]
+          r << @back_prop_output[l] * @normalize_input_activation[o]
         end
         dWv = Vector.elements(r).covector
         dWo = dWo.vstack(dWv)
       end
     end
-    dWo
+    @hidden_weights_change = dWo
   end
 
   def weights_change
-    @weights[0] = (@weights[0] - hidden_weights_change * @lr*0.1)
-    @weights[1] = (@weights[1] - output_weights_change * @lr)
-    binding.pry
+    @weights[0] = (@weights[0] - @hidden_weights_change * @lr*0.1)
+    @weights[1] = (@weights[1] - @output_weights_change * @lr)
     @weights
   end
 end
