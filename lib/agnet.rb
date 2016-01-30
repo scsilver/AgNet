@@ -10,8 +10,6 @@ class Agnet
     @hdn_nodes = hidden_nodes
     @out_nodes = output_nodes
     @function = function
-    @input_activation = input_activation
-    @label = 3
     @input_bias = input_bias
     @hidden_bias = hidden_bias
     @bits = bits
@@ -19,9 +17,30 @@ class Agnet
     @weights = Array.new(2)
     @training_data = []
     @testing_data = []
-    @training_size = 100
+    @training_size = 5
+    @input_activation = input_activation
+    @label = 3
 
   end
+  def train
+    load_data
+    set_initial_weights
+    scale_initial_weights
+    @training_data.each_with_index do | row, i|
+
+      @input_activation = row[1..@in_nodes]
+      @label = row[0]
+
+      normalize_input_activation
+      hidden_layer_activation
+      output_error
+      back_prop_output
+      hidden_weights_change
+      output_weights_change
+      weights_change
+    end
+  end
+
 
   def load_data
     CSV.foreach('train.csv') do |row|
@@ -210,6 +229,10 @@ class Agnet
   def weights_change
     @weights[0] = (@weights[0] - @hidden_weights_change * @lr*0.1)
     @weights[1] = (@weights[1] - @output_weights_change * @lr)
+    @weights
+  end
+
+  def weights
     @weights
   end
 end

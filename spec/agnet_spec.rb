@@ -15,6 +15,8 @@ describe Agnet do
       @hidden_bias = 1.0
       @bits = 255.0
       @function = 'sigmax'
+      @weights = Array.new(2)
+
 
 
     end
@@ -38,6 +40,13 @@ describe Agnet do
         end
         it 'has values in range 0 to @bits -1' do
           expect(subject.load_data[0][0]).to be_between(0, @bits).inclusive
+        end
+      end
+      context '#train' do
+        it 'adjusts weights' do
+          weights = subject.weights
+          subject.train
+          expect(weights).not_to eq(subject.weights)
         end
       end
       context '#set_initial_factors' do
