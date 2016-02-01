@@ -16,9 +16,6 @@ describe Agnet do
       @bits = 255.0
       @function = 'sigmax'
       @weights = Array.new(2)
-
-
-
     end
     subject { Agnet.new(@input_nodes, @hidden_nodes, @output_nodes, @function, @input_activation, @input_bias, @hidden_bias, @bits) }
 
@@ -49,12 +46,51 @@ describe Agnet do
           expect(weights).not_to eq(subject.weights)
         end
       end
+      context '#iteration' do
+        it 'returns current iteration' do
+          expect(subject.iteration).to be_a(Integer)
+        end
+      end
       context '#classify' do
-        it 'returns guess for data' do
+        it 'returns guess array for data' do
           weights = subject.weights
           subject.train
+          expect(subject.classify).to be_a(Array)
+        end
+
+      end
+      context '#training_score' do
+        it 'updates boolean for each iteration' do
+          subject.training_score
           expect(weights).not_to eq(subject.weights)
         end
+        it 'updates training-score log with boolean' do
+        end
+        it 'updates total running average' do
+        end
+        it 'updates 5000 running average' do
+        end
+        it 'updates 1000 running average' do
+        end
+        it 'updates 100 running average' do
+        end
+      end
+
+      context '#test_score' do
+        it 'updates boolean for each iteration' do
+        end
+        it 'updates test-score log with boolean' do
+        end
+        it 'updates total running average' do
+        end
+        it 'updates 5000 running average' do
+        end
+        it 'updates 1000 running average' do
+        end
+        it 'updates 100 running average' do
+        end
+      end
+      context '#logs' do
       end
       context '#set_initial_factors' do
         it 'sets array of initial factors for hdn and output weight matrix' do

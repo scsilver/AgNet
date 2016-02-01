@@ -17,32 +17,51 @@ class Agnet
     @weights = Array.new(2)
     @training_data = []
     @testing_data = []
-    @training_size = 5
+    @training_size = 600
     @input_activation = input_activation
     @label = 3
-
   end
 
   def train
     load_data
     set_initial_weights
     scale_initial_weights
-    @training_data.each_with_index do | row, i|
-
+    @training_data.each_with_index do |row, i|
+      @iteration = ( i + 1 )
       @input_activation = row[1..@in_nodes]
       @label = row[0]
-
-      normalize_input_activation
-      hidden_layer_activation
       output_error
       back_prop_output
       hidden_weights_change
       output_weights_change
       weights_change
+      puts @weights[0][0,0]
+      puts @weights[1][0,0]
     end
   end
 
+  def classify
+    @testing_data.each_with_index do |row|
+      @input_activation = row[1..@in_nodes]
+      @label = row[0]
+      normalize_input_activation
+      hidden_layer_activation
+      output_layer_activation
+      training_score
+      puts 'Guess: ', guess(output_layer_activation)
+      puts 'Label: ', @label
+    end
+  end
 
+  def iteration
+    @iteration
+  end
+
+  def training_score
+    @it_score = ( @label == guess(output_layer_activation))
+    @training_score_log << correct
+    @total_running_average = @training_score_log.count(true).to_f
+  end
   def load_data
     CSV.foreach('train.csv') do |row|
       if @training_data.size <= @training_size
@@ -121,6 +140,10 @@ class Agnet
 
   def activation_function(z)
     fin = Array.new(z.size)
+    if @function == 'sigmoid'
+      sigmoid(z)
+    end
+
     if @function == 'sigmax'
 
       res = Array.new(z.size)
@@ -139,6 +162,23 @@ class Agnet
 
     return fin
   end
+  def sigmoid(z)
+    res = Array.new(z.size)
+    z.each_with_index do |z, i|
+      res[i] = (1.0 / (1.0 + Math.exp(-z)))
+    end
+    res
+  end
+
+  def sigmoid_prime(z)
+    res = Array.new(z.size)
+    z.each_with_index do |z, i|
+      res[i] = ((1.0 / (1.0 + Math.exp(-z))) * (1 - (1.0 / (1.0 + Math.exp(-z)))))
+    end
+    res
+  end
+
+
 
   def vectorize_hidden_layer
     array = Array.new(@hdn_nodes + 1)
@@ -180,7 +220,7 @@ class Agnet
   def back_prop_output
     h_e = []
     @hdn_nodes.times do |w|
-      h_e << (scale_initial_weights[1].column(w).inner_product(@output_error) * @hidden_layer_activation[w])
+      h_e << (scale_initial_weights[1].column(w).inner_product(@output_error) * hidden_layer_activation[w])
     end
     @back_prop_output = h_e
   end
