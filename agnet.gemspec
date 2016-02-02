@@ -22,10 +22,10 @@ Gem::Specification.new do |spec|
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
-  spec.files         = ["lib/agnet.rb", "lib/data/train.csv"]
+  spec.files         = ["lib/agnet.rb", "lib/data/train.csv", "lib/agnet/version.rb"]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib", "lib/data"]
+  spec.require_paths = ["lib", "lib/data", "lib/agnet"]
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
