@@ -7,17 +7,23 @@ describe Agnet do
 
   describe 'public instance methods' do
     before do
-      @input_nodes = 784 #28^2
+      @input_nodes = 784
       @hidden_nodes = 16
       @output_nodes = 10
       @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       @input_bias = 1.0
       @hidden_bias = 1.0
       @bits = 255.0
+      @training_size = 100
+      @learning_rate = 0.5
       @function = 'sigmax'
       @weights = Array.new(2)
     end
-    subject { Agnet.new(@input_nodes, @hidden_nodes, @output_nodes, @function, @input_activation, @input_bias, @hidden_bias, @bits) }
+    subject do
+      Agnet.new(@input_nodes, @hidden_nodes, @output_nodes, @function,
+                @input_activation, @input_bias, @hidden_bias, @bits,
+                @training_size, @learning_rate)
+    end
 
     let(:input) do
       [input_activation, weights_hidden, weights_output,
@@ -53,11 +59,9 @@ describe Agnet do
       end
       context '#classify' do
         it 'returns guess array for data' do
-          weights = subject.weights
           subject.train
           expect(subject.classify).to be_a(Array)
         end
-
       end
       context '#training_score' do
         it 'updates boolean for each iteration' do
@@ -97,7 +101,6 @@ describe Agnet do
           expect(subject.set_initial_factors.size).to eq(2)
         end
         it 'sets array values according to function  1 / inputsize^0.5' do
-
           expect(subject.set_initial_factors[0]).to eq(1 / @input_nodes**0.5)
           expect(subject.set_initial_factors[1]).to eq(1 / @hidden_nodes**0.5)
         end
@@ -125,13 +128,13 @@ describe Agnet do
           subject.set_initial_weights
 
           expect(subject.scale_initial_weights[0])
-            .to eq( subject.initial_weights[0] *  subject.set_initial_factors[0])
+            .to eq(subject.initial_weights[0] * subject.set_initial_factors[0])
         end
         it 'mulitplys output initial factor to ouput weight matrix calcs' do
           subject.set_initial_weights
 
           expect(subject.scale_initial_weights[1])
-            .to eq(subject.initial_weights[1]* subject.set_initial_factors[1])
+            .to eq(subject.initial_weights[1] * subject.set_initial_factors[1])
         end
       end
       context '#normalize_input_activation' do
@@ -169,15 +172,16 @@ describe Agnet do
           subject.normalize_input_activation
 
           expect(subject.hidden_layer_activation)
-            .to eq(subject.activation_function(subject.hidden_layer_weighted_sum))
+            .to eq(subject.activation_function(subject
+                                                .hidden_layer_weighted_sum))
         end
       end
       context '#activation_function' do
         it 'returns select activation_function' do
           subject.set_initial_weights
           subject.normalize_input_activation
-
-          #expect(subject.activation_function([.3,.6])).to eq(subject.hidden_layer_weighted_sum)
+          # expect(subject.activation_function([.3,.6]))
+          #  .to eq(subject.hidden_layer_weighted_sum)
         end
       end
 
@@ -232,7 +236,8 @@ describe Agnet do
           subject.normalize_input_activation
 
           expect(subject.output_layer_activation)
-            .to eq(subject.activation_function(subject.output_layer_weighted_sum))
+            .to eq(subject.activation_function(subject
+            .output_layer_weighted_sum))
         end
       end
       context '#guess' do
@@ -296,7 +301,8 @@ describe Agnet do
           subject.set_initial_weights
           subject.normalize_input_activation
 
-          expect(subject.output_error).to eq(subject.vectorize_output_layer - Vector.elements(subject.label_array))
+          expect(subject.output_error).to eq(subject.vectorize_output_layer -
+          Vector.elements(subject.label_array))
         end
       end
       context '#back_prop_output' do
@@ -316,7 +322,8 @@ describe Agnet do
 
           expect(subject.back_prop_output[0])
             .to eq(subject.scale_initial_weights[1]
-            .column(0).inner_product(subject.output_error) * subject.hidden_layer_activation[0])
+            .column(0).inner_product(subject.output_error) *
+              subject.hidden_layer_activation[0])
         end
       end
       context '#hidden_weights_change' do
@@ -326,7 +333,6 @@ describe Agnet do
           subject.hidden_layer_activation
           subject.output_error
           subject.back_prop_output
-
 
           expect(subject.hidden_weights_change).to be_a(Matrix)
         end
@@ -346,7 +352,8 @@ describe Agnet do
           subject.output_error
           subject.back_prop_output
 
-          expect(subject.hidden_weights_change.column_count).to eq(@input_nodes + 1)
+          expect(subject.hidden_weights_change.column_count)
+            .to eq(@input_nodes + 1)
         end
       end
       context '#output_weights_change' do
@@ -375,7 +382,8 @@ describe Agnet do
           subject.output_error
           subject.back_prop_output
 
-          expect(subject.output_weights_change.column_count).to eq(@hidden_nodes + 1)
+          expect(subject.output_weights_change.column_count)
+            .to eq(@hidden_nodes + 1)
         end
       end
       context '#weights_change' do
@@ -388,7 +396,6 @@ describe Agnet do
           subject.hidden_weights_change
           subject.output_weights_change
 
-
           expect(subject.weights_change).to be_a(Array)
         end
         it 'has first value in array that is a matrix' do
@@ -400,11 +407,9 @@ describe Agnet do
           subject.hidden_weights_change
           subject.output_weights_change
 
-
           expect(subject.weights_change[0]).to be_a(Matrix)
-
         end
-        it  'has first value in array that has output_nodes # of rows' do
+        it 'has first value in array that has output_nodes # of rows' do
           subject.set_initial_weights
           subject.normalize_input_activation
           subject.hidden_layer_activation
@@ -412,7 +417,6 @@ describe Agnet do
           subject.back_prop_output
           subject.hidden_weights_change
           subject.output_weights_change
-
 
           expect(subject.weights_change[0].row_count).to eq(@hidden_nodes)
         end
@@ -425,7 +429,6 @@ describe Agnet do
           subject.hidden_weights_change
           subject.output_weights_change
 
-
           expect(subject.weights_change[0].column_count).to eq(@input_nodes + 1)
         end
         it 'has second value in array that is a matrix' do
@@ -437,11 +440,9 @@ describe Agnet do
           subject.hidden_weights_change
           subject.output_weights_change
 
-
           expect(subject.weights_change[1]).to be_a(Matrix)
-
         end
-        it  'has second value in array that has output_nodes # of rows' do
+        it 'has second value in array that has output_nodes # of rows' do
           subject.set_initial_weights
           subject.normalize_input_activation
           subject.hidden_layer_activation
@@ -449,11 +450,10 @@ describe Agnet do
           subject.back_prop_output
           subject.hidden_weights_change
           subject.output_weights_change
-
 
           expect(subject.weights_change[1].row_count).to eq(@output_nodes)
         end
-        it 'has second value in array that has hidden_nodes + 1  # of columns' do
+        it 'has second value in array that has hidden_nodes + 1 # of columns' do
           subject.set_initial_weights
           subject.normalize_input_activation
           subject.hidden_layer_activation
@@ -462,8 +462,8 @@ describe Agnet do
           subject.hidden_weights_change
           subject.output_weights_change
 
-
-          expect(subject.weights_change[1].column_count).to eq(@hidden_nodes + 1)
+          expect(subject.weights_change[1].column_count)
+            .to eq(@hidden_nodes + 1)
         end
       end
     end
