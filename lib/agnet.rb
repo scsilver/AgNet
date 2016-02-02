@@ -64,7 +64,7 @@ class Agnet
     @total_running_average = @training_score_log.count(true).to_f
   end
   def load_data
-    CSV.foreach('data/train.csv') do |row|
+    CSV.foreach('lib/agnet/train.csv') do |row|
       if @training_data.size <= @training_size
         @training_data << row.map(&:to_i)
         puts 'Row: ', @training_data.size
