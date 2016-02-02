@@ -2,7 +2,6 @@ require 'agnet/version'
 require 'csv'
 require 'matrix'
 require 'pry'
-require 'data/train.csv'
 
 class Agnet
   def initialize(input_nodes, hidden_nodes, output_nodes, function,
