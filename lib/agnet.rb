@@ -2,6 +2,7 @@ require 'agnet/version'
 require 'csv'
 require 'matrix'
 require 'pry'
+require 'data/train.csv'
 
 class Agnet
   def initialize(input_nodes, hidden_nodes, output_nodes, function,
@@ -63,7 +64,7 @@ class Agnet
     @total_running_average = @training_score_log.count(true).to_f
   end
   def load_data
-    CSV.foreach('train.csv') do |row|
+    CSV.foreach('data/train.csv') do |row|
       if @training_data.size <= @training_size
         @training_data << row.map(&:to_i)
         puts 'Row: ', @training_data.size
