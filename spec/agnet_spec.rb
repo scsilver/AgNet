@@ -20,14 +20,13 @@ describe Agnet do
       @weights = Array.new(2)
     end
     subject do
-      Agnet.new(@input_nodes, @hidden_nodes, @output_nodes, @function,
-                @input_activation, @input_bias, @hidden_bias, @bits,
-                @training_size, @learning_rate)
+      Agnet.new
     end
 
     let(:input) do
-      [input_activation, weights_hidden, weights_output,
-       input_nodes, hidden_nodes, output_nodes]
+      [@input_nodes, @hidden_nodes, @output_nodes, @function,
+                @input_activation, @input_bias, @hidden_bias, @bits,
+                @training_size, @learning_rate]
     end
 
     let(:output) { subject.process(input) }
@@ -39,16 +38,16 @@ describe Agnet do
     context 'executes methods correctly' do
       context '#load_data' do
         it 'returns a vector' do
-          expect(subject.load_data).to be_a(Array)
+          expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')).to be_a(Array)
         end
         it 'has values in range 0 to @bits -1' do
-          expect(subject.load_data[0][0]).to be_between(0, @bits).inclusive
+          expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')[0][0]).to be_between(0, @bits).inclusive
         end
       end
       context '#train' do
         it 'adjusts weights' do
           weights = subject.weights
-          subject.train
+          subject.train('/Users/scott/Documents/code/custom_gems/agnet/train.csv')
           expect(weights).not_to eq(subject.weights)
         end
       end
@@ -59,14 +58,21 @@ describe Agnet do
       end
       context '#classify' do
         it 'returns guess array for data' do
-          subject.train
+          subject.train('/Users/scott/Documents/code/custom_gems/agnet/train.csv')
           expect(subject.classify).to be_a(Array)
         end
       end
       context '#training_score' do
         it 'updates boolean for each iteration' do
+          subject.set_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_activation
+          subject.output_error
+
+
+          it_score = @it_score
           subject.training_score
-          expect(weights).not_to eq(subject.weights)
+          expect(it_score).not_to eq(subject.it_score)
         end
         it 'updates training-score log with boolean' do
         end

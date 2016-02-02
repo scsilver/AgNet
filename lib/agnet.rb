@@ -4,25 +4,41 @@ require 'matrix'
 require 'pry'
 
 class Agnet
-  def initialize(input_nodes, hidden_nodes, output_nodes, function,
-                 input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
-    @in_nodes = input_nodes
-    @hdn_nodes = hidden_nodes
-    @out_nodes = output_nodes
-    @function = function
-    @input_bias = input_bias
-    @hidden_bias = hidden_bias
-    @bits = bits
-    @lr = learning_rate
+  def initialize
+    # (input_nodes, hidden_nodes, output_nodes, function,
+    #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
+
+    @input_nodes = 784
+    @hidden_nodes = 16
+    @output_nodes = 10
+    @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    @function = 'sigmax'
+    @input_bias = 1.0
+    @hidden_bias = 1.0
+    @bits = 255.0
+    @training_size = 5
+    @learning_rate = 0.5
+    @in_nodes = @input_nodes
+    @hdn_nodes = @hidden_nodes
+    @out_nodes = @output_nodes
+    @function = @function
+    @input_bias = @input_bias
+    @hidden_bias = @hidden_bias
+    @bits = @bits
+    @lr = @learning_rate
     @weights = Array.new(2)
+    @training_score_log  = []
+
     @training_data = []
     @testing_data = []
-    @training_size = training_size
-    @input_activation = input_activation
+    @training_size = @training_size
+    @input_activation = @input_activation
     @label = 3
+    @iteration = 0
   end
 
   def train(path)
+    @iteration = 0
     load_data(path)
     set_initial_weights
     scale_initial_weights
@@ -41,40 +57,49 @@ class Agnet
   end
 
   def classify
-    @testing_data.each_with_index do |row|
+    @iteration = 0
+    @testing_data.each_with_index do |row, i|
+      @iteration = (i + 1)
       @input_activation = row[1..@in_nodes]
       @label = row[0]
       normalize_input_activation
       hidden_layer_activation
-      output_layer_activation
-      training_score
-      puts 'Guess: ', guess(output_layer_activation)
+      @output_layer_activation = output_layer_activation
+      puts 'Guess: ', guess(@output_layer_activation)
       puts 'Label: ', @label
+      training_score
     end
   end
+
+  def it_score
+    @it_score
+  end
+
 
   def iteration
     @iteration
   end
 
   def training_score
-    @it_score = (@label == guess(output_layer_activation))
-    @training_score_log << correct
+    @it_score = @label == guess(@output_layer_activation)
+    @training_score_log << @it_score
     @total_running_average = @training_score_log.count(true).to_f
   end
+
   def load_data(path)
     CSV.foreach(path) do |row|
-      if @training_data.size <= @training_size
-        @training_data << row.map(&:to_i)
-        puts 'Row: ', @training_data.size
-      else
-        @testing_data << row.map(&:to_i)
-        puts 'Row: ', (@training_data.size + @testing_data.size)
+        if @training_data.size <= @training_size
+          @training_data << row.map(&:to_i)
+          puts 'Row: ', @training_data.size
+        else
+          @testing_data << row.map(&:to_i)
+          puts 'Row: ', (@training_data.size + @testing_data.size)
+        end
+
+        break if @training_data.size + @testing_data.size == @training_size +
+                 (@training_size / 5.0).to_i
       end
 
-      break if @training_data.size + @testing_data.size == @training_size +
-               (@training_size / 5.0).to_i
-    end
     @training_data[1]
   end
 
@@ -188,7 +213,7 @@ class Agnet
   end
 
   def output_layer_activation
-    activation_function(output_layer_weighted_sum)
+    @output_layer_activation = activation_function(output_layer_weighted_sum)
   end
 
   def guess(outputs)
@@ -233,7 +258,7 @@ class Agnet
           r << @output_error[l] * @vectorize_hidden_layer[o]
         end
         dwv = Vector.elements(r).covector
-        dwo = dWo.vstack(dwv)
+        dwo = dwo.vstack(dwv)
       end
     end
     @output_weights_change = dwo
@@ -254,7 +279,7 @@ class Agnet
           r << @back_prop_output[l] * @normalize_input_activation[o]
         end
         dwv = Vector.elements(r).covector
-        dwo = dWo.vstack(dwv)
+        dwo = dwo.vstack(dwv)
       end
     end
     @hidden_weights_change = dwo
