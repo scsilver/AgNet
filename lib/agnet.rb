@@ -22,8 +22,8 @@ class Agnet
     @label = 3
   end
 
-  def train
-    load_data
+  def train(path)
+    load_data(path)
     set_initial_weights
     scale_initial_weights
     @training_data.each_with_index do |row, i|
@@ -62,8 +62,8 @@ class Agnet
     @training_score_log << correct
     @total_running_average = @training_score_log.count(true).to_f
   end
-  def load_data
-    CSV.foreach('lib/agnet/train.csv') do |row|
+  def load_data(path)
+    CSV.foreach(path) do |row|
       if @training_data.size <= @training_size
         @training_data << row.map(&:to_i)
         puts 'Row: ', @training_data.size
