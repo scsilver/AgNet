@@ -66,6 +66,7 @@ class Agnet
       puts @weights[1][0, 0]
     end
     @label = nil
+    @running_average_100
   end
 
   def classify(sample)
@@ -76,11 +77,10 @@ class Agnet
     output_layer_weighted_sum
     @output_layer_activation = output_layer_activation
     puts 'Activation: ', @output_layer_activation
-
     gs = guess(@output_layer_activation)
     puts 'Guess: ', gs
     puts 'Label: ', @label
-    gs
+    @output_layer_activation
   end
 
   def test
@@ -93,6 +93,7 @@ class Agnet
       testing_score
     end
     @label = nil
+    @total_running_average
   end
 
   def it_score
@@ -113,8 +114,10 @@ class Agnet
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
     puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / 100.0
     puts 'Last 1000 Acuracy: ', @running_average_1000 = @training_score_log.last(1000).count(true).to_f / 1000.0
-    puts 'Last 6000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / 5000.0
+    puts 'Last 5000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / 5000.0
     @it_score = nil
+    [@iteration,@training_score_log,@total_running_average,@running_average_100,@running_average_1000,@running_average_5000]
+
   end
 
   def testing_score
@@ -126,8 +129,9 @@ class Agnet
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
     puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / 100.0
     puts 'Last 1000 Acuracy: ', @running_average_1000 = @testing_score_log.last(1000).count(true).to_f / 1000.0
-    puts 'Last 6000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / 5000.0
+    puts 'Last 5000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / 5000.0
     @it_score = nil
+    [@iteration,@testing_score_log,@total_running_average,@running_average_100,@running_average_1000,@running_average_5000]
   end
 
   def load_data(path)
