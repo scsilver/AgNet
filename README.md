@@ -3,6 +3,7 @@
 2 Layer Feed forward Neural Network.
 
 TODO:
+
 1. Add more customization of neural net hyper-parameters
 2. Mnist dataset example
 
@@ -23,40 +24,68 @@ Or install it yourself as:
     $ gem install agnet
 
 ## Usage
-1. Initialize your network
+### Initialize your network
 ```ruby
   net = Agnet.new
 ```
-2. Train your Network with a csv file
+
+### Train your Network with a csv file
 ```ruby
   net.train('path_to_your_csv_data_file')
 ```
 Returns average of last 100 iterations during the training phase
+
 (currently supports csv in format header label,pixel0,pixel1,...pixel783)
+
 label from 0 to 9 (10 output nodes) 784 pixels (28x28 px image)
-3. Classify a potion of data with a test of your trained net
+
+### Classify a potion of data with a test of your trained net
 ```ruby
   net.test
 ```
 Returns average correct through test Float between 0 and 1
+
 (the net.train(file) method is set to grab 10000 rows for training data and 2000 rows for test data)
-4. Classify an individual sample
+
+### Classify an individual sample
 ```ruby
   net.classify([784 pixel array with values from 0-255])
 ```
 Returns output activation array [10 values from 0.0 to 1.0]
-5. Training Scores
+
+### Training Scores
 ```ruby
   net.training_score
 ```
 Returns array with scores and iterations and training score log
+
 [iteration,training_score_log,total_running_average,running_average_100,running_average_1000,running_average_5000]
-6. Training Scores
+
+### Training Scores
 ```ruby
   net.testing_score
 ```
 Returns array with scores and iterations and testing score log
+
 [iteration,testing_score_log,total_running_average,running_average_100,running_average_1000,running_average_5000]
+
+## Configuration
+
+### Custom configuration in development and coming in future versions
+
+Current Configuration
+
+input_nodes = 784
+hidden_nodes = 20
+output_nodes = 10
+hidden_function = 'sigmoid'
+output_function = 'soft_max'
+input_bias = 1.0
+hidden_bias = 1.0
+bits = 255.0
+learning_rate = 0.05
+training_size = 10000
+testing_size = 2000
 
 
 ## Development
