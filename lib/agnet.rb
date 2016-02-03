@@ -9,14 +9,14 @@ class Agnet
     #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
 
     @input_nodes = 784
-    @hidden_nodes = 16
+    @hidden_nodes = 100
     @output_nodes = 10
     @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     @function = 'sigmax'
     @input_bias = 1.0
     @hidden_bias = 1.0
     @bits = 255.0
-    @training_size = 10
+    @training_size = 1000
     @learning_rate = 0.5
     @in_nodes = @input_nodes
     @hdn_nodes = @hidden_nodes
@@ -28,6 +28,8 @@ class Agnet
     @lr = @learning_rate
     @weights = Array.new(2)
     @training_score_log  = []
+    @testing_score_log  = []
+
 
     @training_data = []
     @testing_data = []
@@ -37,14 +39,20 @@ class Agnet
   end
 
   def train(path)
+    @training_data = []
+    @testing_data = []
     @iteration = 0
+
     load_data(path)
     set_initial_weights
     scale_initial_weights
+
     @training_data.each_with_index do |row, i|
       @iteration = (i + 1)
       @input_activation = row[1..@in_nodes]
       @label = row[0]
+      classify(@input_activation)
+      training_score
       output_error
       back_prop_output
       hidden_weights_change
@@ -74,7 +82,7 @@ class Agnet
       @input_activation = row[1..@in_nodes]
       @label = row[0]
       classify(@input_activation)
-      training_score
+      testing_score
     end
     @label = nil
   end
@@ -91,10 +99,27 @@ class Agnet
   def training_score
     @it_score = @label == guess(@output_layer_activation)
     @training_score_log << @it_score
-    @total_running_average = @training_score_log.count(true).to_f
-    @running_average_100 = @training_score_log.last(100).count(true).to_f
-    @running_average_1000 = @training_score_log.last(1000).count(true).to_f
-    @running_average_5000 = @training_score_log.last(5000).count(true).to_f
+    count_true = @training_score_log.count(true)
+    puts 'Iteration: ', @iteration
+    puts '# Correct : ', count_true
+    puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
+    puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / 100.0
+    puts 'Last 1000 Acuracy: ', @running_average_1000 = @training_score_log.last(1000).count(true).to_f / 1000.0
+    puts 'Last 6000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / 5000.0
+    @it_score = nil
+  end
+
+  def testing_score
+    @it_score = @label == guess(@output_layer_activation)
+    @testing_score_log << @it_score
+    count_true = @testing_score_log.count(true)
+    puts 'Iteration: ', @iteration
+    puts '# Correct : ', count_true
+    puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
+    puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / 100.0
+    puts 'Last 1000 Acuracy: ', @running_average_1000 = @testing_score_log.last(1000).count(true).to_f / 1000.0
+    puts 'Last 6000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / 5000.0
+    @it_score = nil
   end
 
   def load_data(path)
@@ -165,11 +190,17 @@ class Agnet
     @hdn_nodes.times do |i|
       z_v_h << scale_initial_weights[0].row(i).inner_product(normalize_input_activation)
     end
+    back_prop_derivation(z_v_h)
     z_v_h
+
   end
 
   def hidden_layer_activation
     @hidden_layer_activation = activation_function(hidden_layer_weighted_sum)
+  end
+
+  def back_prop_derivation(z)
+    @back_prop_derivation = sigmoid_prime(z)
   end
 
   def activation_function(z)
@@ -230,7 +261,7 @@ class Agnet
   end
 
   def vectorize_output_layer
-    Vector.elements(output_layer_activation)
+    Vector.elements(@output_layer_activation)
   end
 
   def label_array
@@ -244,10 +275,11 @@ class Agnet
   end
 
   def back_prop_output
+
     h_e = []
     @hdn_nodes.times do |w|
-      h_e << (scale_initial_weights[1].column(w).inner_product(@output_error) *
-      hidden_layer_activation[w])
+      h_e << (@weights[1].column(w).inner_product(@output_error) *
+      @back_prop_derivation[w])
     end
     @back_prop_output = h_e
   end
