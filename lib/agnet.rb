@@ -9,15 +9,15 @@ class Agnet
     #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
 
     @input_nodes = 784
-    @hidden_nodes = 100
+    @hidden_nodes = 20
     @output_nodes = 10
     @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     @function = 'sigmax'
     @input_bias = 1.0
     @hidden_bias = 1.0
     @bits = 255.0
-    @training_size = 1000
-    @learning_rate = 0.5
+    @training_size = 10000
+    @learning_rate = 0.05
     @in_nodes = @input_nodes
     @hdn_nodes = @hidden_nodes
     @out_nodes = @output_nodes
@@ -29,8 +29,10 @@ class Agnet
     @weights = Array.new(2)
     @training_score_log  = []
     @testing_score_log  = []
+    @out_z = []
+    @hdn_z = []
 
-
+    @error = nil
     @training_data = []
     @testing_data = []
     @training_size = @training_size
@@ -51,7 +53,9 @@ class Agnet
       @iteration = (i + 1)
       @input_activation = row[1..@in_nodes]
       @label = row[0]
+
       classify(@input_activation)
+
       training_score
       output_error
       back_prop_output
@@ -67,8 +71,12 @@ class Agnet
   def classify(sample)
     @input_activation = sample
     normalize_input_activation
+    hidden_layer_weighted_sum
     hidden_layer_activation
+    output_layer_weighted_sum
     @output_layer_activation = output_layer_activation
+    puts 'Activation: ', @output_layer_activation
+
     gs = guess(@output_layer_activation)
     puts 'Guess: ', gs
     puts 'Label: ', @label
@@ -181,22 +189,23 @@ class Agnet
   def normalize_input_activation
     array = Array.new(@in_nodes + 1)
     array = @input_activation
-    array[@in_nodes] = @input_bias
+    array[@in_nodes] = @input_bias * @bits
     @normalize_input_activation = Vector.elements(array) / @bits
+    puts @normalize_input_activation
+    @normalize_input_activation
   end
 
   def hidden_layer_weighted_sum
-    z_v_h = []
+    @hdn_z = []
     @hdn_nodes.times do |i|
-      z_v_h << scale_initial_weights[0].row(i).inner_product(normalize_input_activation)
+      @hdn_z << @weights[0].row(i).inner_product(@normalize_input_activation)
     end
-    back_prop_derivation(z_v_h)
-    z_v_h
-
+    back_prop_derivation(@hdn_z)
+    @hdn_z
   end
 
   def hidden_layer_activation
-    @hidden_layer_activation = activation_function(hidden_layer_weighted_sum)
+    @hidden_layer_activation = sigmoid(@hdn_z)
   end
 
   def back_prop_derivation(z)
@@ -236,24 +245,36 @@ class Agnet
     res
   end
 
+  def soft_max(z)
+    res = Array.new(z.size)
+    z.each_with_index do |z, i|
+      res[i] = Math.exp(z)
+    end
+    sum = res.inject(:+)
+    res.each_with_index do |l, i|
+      res[i] = l / sum
+    end
+    res
+  end
+
   def vectorize_hidden_layer
     array = Array.new(@hdn_nodes + 1)
-    array = hidden_layer_activation
+    array = @hidden_layer_activation
     array[@hdn_nodes] = @hidden_bias
     @vectorize_hidden_layer = Vector.elements(array)
   end
 
   def output_layer_weighted_sum
-    z_v_o = []
+    @out_z = []
     @out_nodes.times do |i|
-      z_v_o << scale_initial_weights[1].row(i)
+      @out_z << @weights[1].row(i)
                .inner_product(vectorize_hidden_layer)
     end
-    z_v_o
+    @out_z
   end
 
   def output_layer_activation
-    @output_layer_activation = activation_function(output_layer_weighted_sum)
+    @output_layer_activation = soft_max(@out_z)
   end
 
   def guess(outputs)
@@ -261,6 +282,7 @@ class Agnet
   end
 
   def vectorize_output_layer
+
     Vector.elements(@output_layer_activation)
   end
 
@@ -272,9 +294,12 @@ class Agnet
 
   def output_error
     @output_error = vectorize_output_layer - Vector.elements(label_array)
+    puts 'Error: ', @output_error.collect(&:abs).inject(:+)
+    @output_error
   end
 
   def back_prop_output
+
 
     h_e = []
     @hdn_nodes.times do |w|
@@ -285,6 +310,8 @@ class Agnet
   end
 
   def output_weights_change
+
+
     dwo = []
     @out_nodes.times do |l|
       if l == 0
@@ -293,6 +320,7 @@ class Agnet
           r << @output_error[l] * @vectorize_hidden_layer[o]
         end
         dwo = Vector.elements(r).covector
+        r=[]
       else
         r = []
         (@hdn_nodes + 1).times do |o|
@@ -300,12 +328,15 @@ class Agnet
         end
         dwv = Vector.elements(r).covector
         dwo = dwo.vstack(dwv)
+        r=[]
       end
     end
     @output_weights_change = dwo
   end
 
   def hidden_weights_change
+
+
     dwo = []
     @hdn_nodes.times do |l|
       if l == 0
@@ -314,6 +345,7 @@ class Agnet
           r << @back_prop_output[l] * @normalize_input_activation[o]
         end
         dwo = Vector.elements(r).covector
+        r = []
       else
         r = []
         (@in_nodes + 1).times do |o|
@@ -321,18 +353,21 @@ class Agnet
         end
         dwv = Vector.elements(r).covector
         dwo = dwo.vstack(dwv)
+        r= []
       end
     end
     @hidden_weights_change = dwo
   end
 
   def weights_change
-    @weights[0] = (@weights[0] - @hidden_weights_change * @lr * 0.1)
+    @weights[0] = (@weights[0] - @hidden_weights_change * @lr * 10)
     @weights[1] = (@weights[1] - @output_weights_change * @lr)
     @weights
   end
 
   def weights
+
+
     @weights
   end
 end
