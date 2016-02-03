@@ -16,7 +16,7 @@ class Agnet
     @input_bias = 1.0
     @hidden_bias = 1.0
     @bits = 255.0
-    @training_size = 5
+    @training_size = 10
     @learning_rate = 0.5
     @in_nodes = @input_nodes
     @hdn_nodes = @hidden_nodes
@@ -33,7 +33,6 @@ class Agnet
     @testing_data = []
     @training_size = @training_size
     @input_activation = @input_activation
-    @label = 3
     @iteration = 0
   end
 
@@ -54,21 +53,30 @@ class Agnet
       puts @weights[0][0, 0]
       puts @weights[1][0, 0]
     end
+    @label = nil
   end
 
-  def classify
+  def classify(sample)
+    @input_activation = sample
+    normalize_input_activation
+    hidden_layer_activation
+    @output_layer_activation = output_layer_activation
+    gs = guess(@output_layer_activation)
+    puts 'Guess: ', gs
+    puts 'Label: ', @label
+    gs
+  end
+
+  def test
     @iteration = 0
     @testing_data.each_with_index do |row, i|
       @iteration = (i + 1)
       @input_activation = row[1..@in_nodes]
       @label = row[0]
-      normalize_input_activation
-      hidden_layer_activation
-      @output_layer_activation = output_layer_activation
-      puts 'Guess: ', guess(@output_layer_activation)
-      puts 'Label: ', @label
+      classify(@input_activation)
       training_score
     end
+    @label = nil
   end
 
   def it_score
@@ -84,11 +92,15 @@ class Agnet
     @it_score = @label == guess(@output_layer_activation)
     @training_score_log << @it_score
     @total_running_average = @training_score_log.count(true).to_f
+    @running_average_100 = @training_score_log.last(100).count(true).to_f
+    @running_average_1000 = @training_score_log.last(1000).count(true).to_f
+    @running_average_5000 = @training_score_log.last(5000).count(true).to_f
   end
 
   def load_data(path)
     CSV.foreach(path) do |row|
-        if @training_data.size <= @training_size
+        if @training_data.size < @training_size
+
           @training_data << row.map(&:to_i)
           puts 'Row: ', @training_data.size
         else
@@ -96,11 +108,8 @@ class Agnet
           puts 'Row: ', (@training_data.size + @testing_data.size)
         end
 
-        break if @training_data.size + @testing_data.size == @training_size +
-                 (@training_size / 5.0).to_i
+        break if @training_data.size + @testing_data.size == @training_size + (@training_size / 5.0).to_i
       end
-
-    @training_data[1]
   end
 
   def scale_initial_weights
