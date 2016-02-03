@@ -6,12 +6,12 @@ require 'agnet/version'
 Gem::Specification.new do |spec|
   spec.name          = "agnet"
   spec.version       = Agnet::VERSION
-  spec.authors       = ["Scsilver"]
+  spec.authors       = ["Scott Silverstein"]
   spec.email         = ["scsilver.umd@gmail.com"]
 
   spec.summary       = %q{2 Layer Neural Network}
   spec.description   = %q{AgNet is a 2 Layer feed forward neural network with backpropogation for training. Can be used to approximate many functions and is useful for classification tasks such as character recognition. }
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/scsilver/AgNet"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

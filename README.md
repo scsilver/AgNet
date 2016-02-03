@@ -75,17 +75,17 @@ Returns array with scores and iterations and testing score log
 
 Current Configuration
 
-input_nodes = 784
-hidden_nodes = 20
-output_nodes = 10
-hidden_function = 'sigmoid'
-output_function = 'soft_max'
-input_bias = 1.0
-hidden_bias = 1.0
-bits = 255.0
-learning_rate = 0.05
-training_size = 10000
-testing_size = 2000
+- input_nodes = 784
+- hidden_nodes = 20
+- output_nodes = 10
+- hidden_function = 'sigmoid'
+- output_function = 'soft_max'
+- input_bias = 1.0
+- hidden_bias = 1.0
+- bits = 255.0
+- learning_rate = 0.05
+- training_size = 10000
+- testing_size = 2000
 
 
 ## Development
