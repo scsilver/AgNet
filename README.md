@@ -17,9 +17,11 @@ A little about the gem and neural networks.
 
 5. These samples get sent through the function and the result is compared to the label. The error between the result and label is then used to make automatic adjustments to the function. These adjustments accumulate and the function's accuracy in classifying a sample correctly rises. It will top out in the 80-95 range.
 
-##Diagram of training phase
-[![AgNet Webm](https://zippy.gfycat.com/SparklingUnsightlyGopher.webm)](https://zippy.gfycat.com/SparklingUnsightlyGopher.webm)
+###Diagram of training phase
 
+####Click for webm pausable version
+
+[![AgNet Webm](http://i.imgur.com/MfTKqMv.gif)](https://zippy.gfycat.com/SparklingUnsightlyGopher.webm)
 
 Neural nets are cool because the technology around them have been responsible for big advances in AI over the past few years. From advancement in computer vision to the recent developments in computer Go playing, neural nets have been breaking some cool new barriers. Since the rudimentary idea is runnable on consumer computers, it can be fun for anyone to experiment with.
 
