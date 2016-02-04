@@ -2,10 +2,22 @@
 
 2 Layer Feed forward Neural Network.
 
-TODO:
+A little about the gem and neural networks.
 
-1. Add more customization of neural net hyper-parameters
-2. Mnist dataset example
+1. It takes a csv file with an array of 784 bits. These represent a 28 x 28 = 784 pixel image of a hand drawn number from 0-9.
+
+2. This array is sent through a neural network, which applies a function to the array which results in a 10 digit output array.
+
+3. The function converts this 784 digit array into a 10 digit array containing most likely classification of the hand drawn image.
+  - An image with a hand drawn 1, sent through this function would result in a output array like  
+[0.01, 0.98, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
+  - However, as a learning machine, the function does not start out correctly classifying the images. It must learn from a labeled training set of these images.
+
+4. I have set the gem to load 10,000 labeled training samples into the function when you call the training method and pass in a csv.
+
+5. These samples get sent through the function and the result is compared to the label. The error between the result and label is then used to make automatic adjustments to the function. These adjustments accumulate and the function's accuracy in classifying a sample correctly rises. It will top out in the 80-95 range.
+
+Neural nets are cool because the technology around them have been responsible for big advances in AI over the past few years. From advancement in computer vision to the recent developments in computer Go playing, neural nets have been breaking some cool new barriers. Since the rudimentary idea is runnable on consumer computers, it can be fun for anyone to experiment with.
 
 ## Installation
 
