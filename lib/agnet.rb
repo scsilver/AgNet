@@ -10,7 +10,7 @@ class Agnet
 
     opt[:input_nodes] ? @input_nodes = opt[:input_nodes] : @input_nodes = 784
     opt[:bits] ? @bits = opt[:bits] : @bits = 255
-    opt[:hidden_nodes] ? @hidden_nodes = opt[:hidden_nodes] : @hidden_nodes = 20
+    opt[:hidden_nodes] ? @hidden_nodes = opt[:hidden_nodes] : @hidden_nodes = 15
     opt[:output_nodes] ? @output_nodes = opt[:output_nodes] : @output_nodes = 10
     opt[:function] ? @function = opt[:function] : @function = 'sigmax'
     opt[:input_bias] ? @input_bias = opt[:input_bias] : @input_bias = 1.0
@@ -376,8 +376,6 @@ class Agnet
   end
 
   def weights
-
-
     @weights
   end
 end

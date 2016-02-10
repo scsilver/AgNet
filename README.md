@@ -21,10 +21,12 @@ A little about the gem and neural networks.
 ###Diagram of the Network
 
 [![Mnist Neural Net](http://neuralnetworksanddeeplearning.com/images/tikz12.png)](http://neuralnetworksanddeeplearning.com/chap1.html)
+http://neuralnetworksanddeeplearning.com/chap1.html
 
 ###The algorithm behind the training function
 
 [![AgNet Webm](http://i.imgur.com/MfTKqMv.gif)](https://zippy.gfycat.com/SparklingUnsightlyGopher.webm)
+
 Click image for .webm/pausable version
 
 Neural nets are cool because the technology around them have been responsible for big advances in AI over the past few years. From advancement in computer vision to the recent developments in computer Go playing, neural nets have been breaking some cool new barriers. Since the rudimentary idea is runnable on consumer computers, it can be fun for anyone to experiment with.
@@ -46,12 +48,12 @@ Or install it yourself as:
     $ gem install agnet
 
 ## Usage
-### Initialize your network
+### Initialize a network
 ```ruby
   net = Agnet.new # default configuration, values detailed below in Readme
 ```
 
-### Or Configure and Initialize your network
+### Or Configure and Initialize a custom network
 ```ruby
   net = Agnet.new(bits: INT,
                   input_nodes: INT,
@@ -123,7 +125,7 @@ Returns array with scores and iterations and testing score log
 ####Default Configuration
 
 - input_nodes = 784
-- hidden_nodes = 20
+- hidden_nodes = 15
 - output_nodes = 10
 - hidden_function = 'sigmoid'
 - output_function = 'soft_max'
