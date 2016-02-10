@@ -9,10 +9,12 @@ class Agnet
     #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
 
     opt[:input_nodes] ? @in_nodes = opt[:input_nodes] : @in_nodes = 784
-    opt[:bits] ? @bits = opt[:bits] : @bits = 255
+    opt[:bits] ? @bits = opt[:bits] : @bits = 255.0
     opt[:hidden_nodes] ? @hdn_nodes = opt[:hidden_nodes] : @hdn_nodes = 15
     opt[:output_nodes] ? @out_nodes = opt[:output_nodes] : @out_nodes = 10
-    opt[:function] ? @function = opt[:function] : @function = 'sigmax'
+    opt[:hidden_layer_function] ? @function[0] = opt[:hidden_layer_function] : @function[0] = 'sigmoid'
+    opt[:output_layer_function] ? @function[1] = opt[:output_layer_function] : @function[1] = 'soft_max'
+
     opt[:input_bias] ? @input_bias = opt[:input_bias] : @input_bias = 1.0
     opt[:hidden_bias] ? @hidden_bias = opt[:hidden_bias] : @hidden_bias = 1.0
     opt[:learning_rate] ? @learning_rate = opt[:learning_rate] : @learning_rate = 0.05
@@ -192,8 +194,8 @@ class Agnet
   def normalize_input_activation
     array = Array.new(@in_nodes + 1) { 0 }
     array = @input_activation
-    array[@in_nodes] = @input_bias * @bits.to_f
-    @normalize_input_activation = Vector.elements(array) / @bits.to_f
+    array[@in_nodes] = @input_bias * @bits
+    @normalize_input_activation = Vector.elements(array) / @bits
     puts @normalize_input_activation
     @normalize_input_activation
   end
@@ -208,18 +210,18 @@ class Agnet
   end
 
   def hidden_layer_activation
-    @hidden_layer_activation = activation_function(@hdn_z)
+    @hidden_layer_activation = activation_function(@hdn_z, 0)
   end
 
   def back_prop_derivation
     @back_prop_derivation = sigmoid_prime(@hdn_z)
   end
 
-  def activation_function(z)
+  def activation_function(z, layer)
     fin = Array.new(z.size)
-    if @function == 'sigmoid'
+    if @function[layer] == 'sigmoid'
       sigmoid(z)
-    elsif @function == 'sigmax'
+    elsif @function[layer] == 'soft_max'
       res = Array.new(z.size)
       z.each_with_index do |val, i|
         res[i] = Math.exp(val)
@@ -277,7 +279,7 @@ class Agnet
   end
 
   def output_layer_activation
-    @output_layer_activation = soft_max(@out_z)
+    @output_layer_activation = activation_function(@out_z, 1)
   end
 
   def guess(outputs)
