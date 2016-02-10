@@ -14,7 +14,9 @@ describe Agnet do
       @input_bias = 1.0
       @hidden_bias = 1.0
       @bits = 255.0
-      @training_size = 100
+      @training_size = 10
+      @testing_size = 10
+
       @learning_rate = 0.5
       @function = 'sigmax'
       @weights = Array.new(2)
@@ -46,7 +48,7 @@ describe Agnet do
       context '#train' do
         it 'adjusts weights' do
           weights = subject.weights
-          subject.train('/Users/scott/Documents/code/custom_gems/agnet/train.csv')
+          subject.train('')
           expect(weights).not_to eq(subject.weights)
         end
       end
@@ -180,7 +182,7 @@ describe Agnet do
 
           expect(subject.hidden_layer_activation)
             .to eq(subject.activation_function(subject
-                                                .hidden_layer_weighted_sum))
+                                                .hidden_layer_weighted_sum, 0))
         end
       end
       context '#activation_function' do
@@ -260,7 +262,7 @@ describe Agnet do
 
           expect(subject.output_layer_activation)
             .to eq(subject.activation_function(subject
-            .output_layer_weighted_sum))
+            .output_layer_weighted_sum,1))
         end
       end
       context '#guess' do
@@ -446,9 +448,9 @@ describe Agnet do
           subject.output_error
 
           expect(subject.back_prop_output[0])
-            .to eq(subject.scale_initial_weights[1]
+            .to eq(subject.weights[1]
             .column(0).inner_product(subject.output_error) *
-              subject.hidden_layer_activation[0])
+              subject.back_prop_derivation[0])
         end
       end
       context '#hidden_weights_change' do

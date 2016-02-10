@@ -108,7 +108,7 @@ class Agnet
     puts 'Iteration: ', @iteration
     puts '# Correct : ', count_true
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
-    puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / @testing_score_log.last(100).count.to_f
+    puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / 100.0
     puts 'Last 1000 Acuracy: ', @running_average_1000 = @training_score_log.last(1000).count(true).to_f / @training_score_log.last(1000).count.to_f
     puts 'Last 5000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / @training_score_log.last(5000).count.to_f
     @it_score = nil
@@ -123,7 +123,7 @@ class Agnet
     puts 'Iteration: ', @iteration
     puts '# Correct : ', count_true
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
-    puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / @testing_score_log.last(100).count.to_f
+    puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / 100.0
     puts 'Last 1000 Acuracy: ', @running_average_1000 = @testing_score_log.last(1000).count(true).to_f / @testing_score_log.last(1000).count.to_f
     puts 'Last 5000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / @testing_score_log.last(5000).count.to_f
     @it_score = nil
