@@ -37,7 +37,7 @@ class Agnet
     @training_data = []
     @testing_data = []
     @training_score_log = []
-    opt[:training_size] ? @training_size = opt[:training_size] : @training_size = 20
+    opt[:training_size] ? @training_size = opt[:training_size] : @training_size = 3000
     opt[:testing_size] ? @testing_size = opt[:testing_size] : @testing_size = (@training_size / 5.0).ceil
 
     @iteration = 0

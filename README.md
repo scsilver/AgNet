@@ -13,7 +13,7 @@ A little about the gem and neural networks.
 [0.01, 0.98, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
   - However, as a learning machine, the function does not start out correctly classifying the images. It must learn from a labeled training set of these images.
 
-4. I have set the gem to load 10,000 labeled training samples into the function when you call the training method and pass in a csv.
+4. I have set the gem to load 1,000 labeled training samples into the function when you call the training method and pass in a csv.
 
 5. These samples get sent through the function and the result is compared to the label. The error between the result and label is then used to make automatic adjustments to the function. These adjustments accumulate and the function's accuracy in classifying a sample correctly rises. It will top out in the 80-95 range.
 
@@ -59,7 +59,6 @@ Or install it yourself as:
                   input_nodes: INT,
                   hidden_nodes: INT,
                   output_nodes: INT,
-                  function: STRING,
                   input_bias: FLOAT,
                   hidden_bias: FLOAT)
                   # Each hash is an optional parameter for configuration
@@ -138,6 +137,8 @@ Returns array with scores and iterations and testing score log
 
 ####Optional Parameters
 
+Initialize
+
 - bits
 - input_nodes
 - hidden_nodes
@@ -146,8 +147,14 @@ Returns array with scores and iterations and testing score log
 - hidden_bias
 - learning_rate
 
+Train
+
 - training_size
 - testing_size
+
+Test
+
+- test_first
 
 
 ## Development
