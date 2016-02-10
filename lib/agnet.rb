@@ -8,15 +8,14 @@ class Agnet
     # (input_nodes, hidden_nodes, output_nodes, function,
     #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
 
-    @input_nodes = 784
+    opt[:input_nodes] ? @input_nodes = opt[:input_nodes] : @input_nodes = 784
+    opt[:bits] ? @bits = opt[:bits] : @bits = 255
     opt[:hidden_nodes] ? @hidden_nodes = opt[:hidden_nodes] : @hidden_nodes = 20
-    opt[:output_nodes] ? @output_nodes = opt[:output_nodes] : @hidden_nodes = 10
-    opt[:default_activation] ? @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] :
-    opt[:hidden_function] ? @hidden_function = opt[:hidden_function] : @function = 'sigmax'
+    opt[:output_nodes] ? @output_nodes = opt[:output_nodes] : @output_nodes = 10
+    opt[:function] ? @function = opt[:function] : @function = 'sigmax'
     opt[:input_bias] ? @input_bias = opt[:input_bias] : @input_bias = 1.0
     opt[:hidden_bias] ? @hidden_bias = opt[:hidden_bias] : @hidden_bias = 1.0
     opt[:learning_rate] ? @learning_rate = opt[:learning_rate] : @learning_rate = 0.05
-    @bits = 255.0
     @in_nodes = @input_nodes
     @hdn_nodes = @hidden_nodes
     @out_nodes = @output_nodes
@@ -42,6 +41,7 @@ class Agnet
   def train(path, opt = {})
     @training_data = []
     @testing_data = []
+    @training_score_log = []
     opt[:training_size] ? @training_size = opt[:training_size] : @training_size = 100
     opt[:testing_size] ? @testing_size = opt[:testing_size] : @testing_size = (@training_size / 5.0).ceil
 
@@ -86,9 +86,12 @@ class Agnet
     @output_layer_activation
   end
 
-  def test
+  def test(opt = {})
+    @testing_score_log = []
+    opt[:test_first] ? test_first = opt[:test_first] : test_first = @testing_size
     @iteration = 0
-    @testing_data.each_with_index do |row, i|
+    test_chunk = @testing_data.first(test_first)
+    test_chunk.each_with_index do |row, i|
       @iteration = (i + 1)
       @input_activation = row[1..@in_nodes]
       @label = row[0]
@@ -196,8 +199,8 @@ class Agnet
   def normalize_input_activation
     array = Array.new(@in_nodes + 1)
     array = @input_activation
-    array[@in_nodes] = @input_bias * @bits
-    @normalize_input_activation = Vector.elements(array) / @bits
+    array[@in_nodes] = @input_bias * @bits.to_f
+    @normalize_input_activation = Vector.elements(array) / @bits.to_f
     puts @normalize_input_activation
     @normalize_input_activation
   end
