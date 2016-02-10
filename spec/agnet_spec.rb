@@ -8,7 +8,7 @@ describe Agnet do
   describe 'public instance methods' do
     before do
       @input_nodes = 784
-      @hidden_nodes = 16
+      @hidden_nodes = 15
       @output_nodes = 10
       @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       @input_bias = 1.0
@@ -18,15 +18,14 @@ describe Agnet do
       @learning_rate = 0.5
       @function = 'sigmax'
       @weights = Array.new(2)
+      @label = 1
+      @test_input_activation = [0, 1, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     end
     subject do
       Agnet.new
     end
 
     let(:input) do
-      [@input_nodes, @hidden_nodes, @output_nodes, @function,
-                @input_activation, @input_bias, @hidden_bias, @bits,
-                @training_size, @learning_rate]
     end
 
     let(:output) { subject.process(input) }
@@ -37,12 +36,12 @@ describe Agnet do
 
     context 'executes methods correctly' do
       context '#load_data' do
-        it 'returns a vector' do
-          expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')).to be_a(Array)
-        end
-        it 'has values in range 0 to @bits -1' do
-          expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')[0][0]).to be_between(0, @bits).inclusive
-        end
+        # it 'returns a vector' do
+        #   expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')).to be_a(Array)
+        # end
+        # it 'has values in range 0 to @bits -1' do
+        #   expect(subject.load_data('/Users/scott/Documents/code/custom_gems/agnet/train.csv')[0][0]).to be_between(0, @bits).inclusive
+        # end
       end
       context '#train' do
         it 'adjusts weights' do
@@ -59,20 +58,16 @@ describe Agnet do
       context '#classify' do
         it 'returns guess array for data' do
           subject.train('/Users/scott/Documents/code/custom_gems/agnet/train.csv')
-          expect(subject.classify).to be_a(Array)
+          expect(subject.classify(@test_input_activation)).to be_a(Array)
         end
       end
       context '#training_score' do
         it 'updates boolean for each iteration' do
-          subject.set_initial_weights
-          subject.normalize_input_activation
-          subject.hidden_layer_activation
-          subject.output_error
-
-
-          it_score = @it_score
-          subject.training_score
-          expect(it_score).not_to eq(subject.it_score)
+          # subject.train('/Users/scott/Documents/code/custom_gems/agnet/train.csv')
+          #
+          # it_score = @it_score
+          # subject.training_score
+          # expect(it_score).not_to eq(@it_score)
         end
         it 'updates training-score log with boolean' do
         end
@@ -158,7 +153,11 @@ describe Agnet do
       end
       context '#hidden_layer_weighted_sum' do
         it 'calcs weight sum vector for nodes in hdn layer with hdn weights' do
+
           subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+
 
           expect(subject.hidden_layer_weighted_sum[0])
             .to eq(subject.scale_initial_weights[0]
@@ -166,6 +165,7 @@ describe Agnet do
         end
         it 'returns array of size hidden nodes' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
 
           expect(subject.hidden_layer_weighted_sum.size).to eq(@hidden_nodes)
@@ -176,6 +176,7 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
 
           expect(subject.hidden_layer_activation)
             .to eq(subject.activation_function(subject
@@ -196,6 +197,8 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
 
           expect(subject.vectorize_hidden_layer).to be_a(Vector)
         end
@@ -203,6 +206,8 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
 
           expect(subject.vectorize_hidden_layer[0])
             .to eq(subject.hidden_layer_activation[0])
@@ -211,6 +216,8 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
 
           expect(subject.vectorize_hidden_layer.size)
             .to eq(subject.hidden_layer_activation.size + 1)
@@ -221,6 +228,9 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
 
           expect(subject.output_layer_weighted_sum[0])
             .to eq(subject.scale_initial_weights[1]
@@ -230,6 +240,9 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
 
           expect(subject.output_layer_weighted_sum.size)
             .to eq(@output_nodes)
@@ -240,6 +253,10 @@ describe Agnet do
           subject.set_initial_weights
           subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
 
           expect(subject.output_layer_activation)
             .to eq(subject.activation_function(subject
@@ -257,20 +274,41 @@ describe Agnet do
       context '#vectorize_output_layer' do
         it 'returns a vector' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+
 
           expect(subject.vectorize_output_layer).to be_a(Vector)
         end
         it 'the initial values do not change from array to vector ' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+
 
           expect(subject.vectorize_output_layer[0])
             .to eq(subject.output_layer_activation[0])
         end
         it 'adds bias to end of vector' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+
 
           expect(subject.vectorize_output_layer.size)
             .to eq(subject.output_layer_activation.size)
@@ -278,34 +316,99 @@ describe Agnet do
       end
       context '#label_array' do
         it 'returns an array' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+
           expect(subject.label_array).to be_a(Array)
         end
         it 'has a size of output size' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+
+
           expect(subject.label_array.size).to eq(@output_nodes)
         end
         it 'has 1 max that equals 1' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+
           expect(subject.label_array.count(1)).to eq(1)
         end
         it 'has other values equal 0' do
+          subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+
           expect(subject.label_array.count(0)).to eq(9)
         end
       end
       context '#output_error' do
         it 'returns an array' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
 
           expect(subject.output_error).to be_a(Vector)
         end
         it 'has a size of output size' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
 
           expect(subject.output_error.size).to eq(@output_nodes)
         end
         it 'returns the difference between label and output as vector' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
+          subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
 
           expect(subject.output_error).to eq(subject.vectorize_output_layer -
           Vector.elements(subject.label_array))
@@ -314,7 +417,15 @@ describe Agnet do
       context '#back_prop_output' do
         it 'returns an array' do
           subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
 
           subject.normalize_input_activation
@@ -323,7 +434,15 @@ describe Agnet do
         end
         it 'back propogates output error' do
           subject.set_initial_weights
+          subject.scale_initial_weights
+          subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
 
           expect(subject.back_prop_output[0])
@@ -335,8 +454,15 @@ describe Agnet do
       context '#hidden_weights_change' do
         it 'returns a matrix' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -344,8 +470,15 @@ describe Agnet do
         end
         it 'matrix has hidden_nodes # of rows' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -353,8 +486,15 @@ describe Agnet do
         end
         it 'matrix has input_nodes + 1  # of columns' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -365,8 +505,15 @@ describe Agnet do
       context '#output_weights_change' do
         it 'returns a matrix' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -374,8 +521,15 @@ describe Agnet do
         end
         it 'matrix has output_nodes # of rows' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -383,8 +537,15 @@ describe Agnet do
         end
         it 'matrix has hidden_nodes + 1  # of columns' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
 
@@ -395,8 +556,15 @@ describe Agnet do
       context '#weights_change' do
         it 'returns an array' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -406,8 +574,15 @@ describe Agnet do
         end
         it 'has first value in array that is a matrix' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -417,8 +592,15 @@ describe Agnet do
         end
         it 'has first value in array that has output_nodes # of rows' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -428,8 +610,15 @@ describe Agnet do
         end
         it 'has first value in array that has hidden_nodes + 1  # of columns' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -439,8 +628,15 @@ describe Agnet do
         end
         it 'has second value in array that is a matrix' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -450,8 +646,15 @@ describe Agnet do
         end
         it 'has second value in array that has output_nodes # of rows' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change
@@ -461,8 +664,15 @@ describe Agnet do
         end
         it 'has second value in array that has hidden_nodes + 1 # of columns' do
           subject.set_initial_weights
+          subject.scale_initial_weights
           subject.normalize_input_activation
+          subject.hidden_layer_weighted_sum
           subject.hidden_layer_activation
+          subject.vectorize_hidden_layer
+          subject.output_layer_weighted_sum
+          subject.output_layer_activation
+          subject.vectorize_output_layer
+          subject.label_array
           subject.output_error
           subject.back_prop_output
           subject.hidden_weights_change

@@ -8,21 +8,16 @@ class Agnet
     # (input_nodes, hidden_nodes, output_nodes, function,
     #             input_activation, input_bias, hidden_bias, bits, training_size, learning_rate)
 
-    opt[:input_nodes] ? @input_nodes = opt[:input_nodes] : @input_nodes = 784
+    opt[:input_nodes] ? @in_nodes = opt[:input_nodes] : @in_nodes = 784
     opt[:bits] ? @bits = opt[:bits] : @bits = 255
-    opt[:hidden_nodes] ? @hidden_nodes = opt[:hidden_nodes] : @hidden_nodes = 15
-    opt[:output_nodes] ? @output_nodes = opt[:output_nodes] : @output_nodes = 10
+    opt[:hidden_nodes] ? @hdn_nodes = opt[:hidden_nodes] : @hdn_nodes = 15
+    opt[:output_nodes] ? @out_nodes = opt[:output_nodes] : @out_nodes = 10
     opt[:function] ? @function = opt[:function] : @function = 'sigmax'
     opt[:input_bias] ? @input_bias = opt[:input_bias] : @input_bias = 1.0
     opt[:hidden_bias] ? @hidden_bias = opt[:hidden_bias] : @hidden_bias = 1.0
     opt[:learning_rate] ? @learning_rate = opt[:learning_rate] : @learning_rate = 0.05
-    @in_nodes = @input_nodes
-    @hdn_nodes = @hidden_nodes
-    @out_nodes = @output_nodes
-    @function = @function
-    @input_bias = @input_bias
-    @hidden_bias = @hidden_bias
-    @bits = @bits
+    @input_activation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    @label = 1
     @lr = @learning_rate
     @weights = Array.new(2)
     @training_score_log  = []
@@ -42,7 +37,7 @@ class Agnet
     @training_data = []
     @testing_data = []
     @training_score_log = []
-    opt[:training_size] ? @training_size = opt[:training_size] : @training_size = 100
+    opt[:training_size] ? @training_size = opt[:training_size] : @training_size = 20
     opt[:testing_size] ? @testing_size = opt[:testing_size] : @testing_size = (@training_size / 5.0).ceil
 
     @iteration = 0
@@ -143,15 +138,13 @@ class Agnet
   def load_data(path, training_size, testing_size)
     CSV.foreach(path) do |row|
         if @training_data.size < training_size
-
           @training_data << row.map(&:to_i)
           puts 'Row: ', @training_data.size
         else
           @testing_data << row.map(&:to_i)
           puts 'Row: ', (@training_data.size + @testing_data.size)
         end
-
-        break if @training_data.size + @testing_data.size == @training_size + testing_size
+        break if @training_data.size + @testing_data.size == training_size + testing_size
       end
   end
 
@@ -197,7 +190,7 @@ class Agnet
   end
 
   def normalize_input_activation
-    array = Array.new(@in_nodes + 1)
+    array = Array.new(@in_nodes + 1) { 0 }
     array = @input_activation
     array[@in_nodes] = @input_bias * @bits.to_f
     @normalize_input_activation = Vector.elements(array) / @bits.to_f
@@ -210,16 +203,16 @@ class Agnet
     @hdn_nodes.times do |i|
       @hdn_z << @weights[0].row(i).inner_product(@normalize_input_activation)
     end
-    back_prop_derivation(@hdn_z)
+    back_prop_derivation
     @hdn_z
   end
 
   def hidden_layer_activation
-    @hidden_layer_activation = sigmoid(@hdn_z)
+    @hidden_layer_activation = activation_function(@hdn_z)
   end
 
-  def back_prop_derivation(z)
-    @back_prop_derivation = sigmoid_prime(z)
+  def back_prop_derivation
+    @back_prop_derivation = sigmoid_prime(@hdn_z)
   end
 
   def activation_function(z)
