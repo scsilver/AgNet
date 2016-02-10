@@ -215,14 +215,7 @@ class Agnet
     if @function[layer] == 'sigmoid'
       sigmoid(z)
     elsif @function[layer] == 'soft_max'
-      res = Array.new(z.size)
-      z.each_with_index do |val, i|
-        res[i] = Math.exp(val)
-      end
-      sum = res.inject(:+)
-      res.each_with_index do |val, i|
-        fin[i] = val / sum
-      end
+      soft_max(z)
     end
     fin
   end
@@ -272,7 +265,7 @@ class Agnet
   end
 
   def output_layer_activation
-    @output_layer_activation = activation_function(@out_z, 1)
+    @output_layer_activation = soft_max(@out_z, 1)
   end
 
   def guess(outputs)
