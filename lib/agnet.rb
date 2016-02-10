@@ -108,9 +108,9 @@ class Agnet
     puts 'Iteration: ', @iteration
     puts '# Correct : ', count_true
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
-    puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / 100.0
-    puts 'Last 1000 Acuracy: ', @running_average_1000 = @training_score_log.last(1000).count(true).to_f / 1000.0
-    puts 'Last 5000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / 5000.0
+    puts 'Last 100 Acuracy: ', @running_average_100 = @training_score_log.last(100).count(true).to_f / @testing_score_log.last(100).count.to_f
+    puts 'Last 1000 Acuracy: ', @running_average_1000 = @training_score_log.last(1000).count(true).to_f / @training_score_log.last(1000).count.to_f
+    puts 'Last 5000 Acuracy: ', @running_average_5000 = @training_score_log.last(5000).count(true).to_f / @training_score_log.last(5000).count.to_f
     @it_score = nil
     [@iteration,@training_score_log,@total_running_average,@running_average_100,@running_average_1000,@running_average_5000]
 
@@ -123,9 +123,9 @@ class Agnet
     puts 'Iteration: ', @iteration
     puts '# Correct : ', count_true
     puts 'Total Acuracy: ', @total_running_average = count_true.to_f / @iteration.to_f
-    puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / 100.0
-    puts 'Last 1000 Acuracy: ', @running_average_1000 = @testing_score_log.last(1000).count(true).to_f / 1000.0
-    puts 'Last 5000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / 5000.0
+    puts 'Last 100 Acuracy: ', @running_average_100 = @testing_score_log.last(100).count(true).to_f / @testing_score_log.last(100).count.to_f
+    puts 'Last 1000 Acuracy: ', @running_average_1000 = @testing_score_log.last(1000).count(true).to_f / @testing_score_log.last(1000).count.to_f
+    puts 'Last 5000 Acuracy: ', @running_average_5000 = @testing_score_log.last(5000).count(true).to_f / @testing_score_log.last(5000).count.to_f
     @it_score = nil
     [@iteration,@testing_score_log,@total_running_average,@running_average_100,@running_average_1000,@running_average_5000]
   end
@@ -189,8 +189,6 @@ class Agnet
     array = @input_activation
     array[@in_nodes] = @input_bias * @bits
     @normalize_input_activation = Vector.elements(array) / @bits
-    puts @normalize_input_activation
-    @normalize_input_activation
   end
 
   def hidden_layer_weighted_sum
@@ -213,9 +211,9 @@ class Agnet
   def activation_function(z, layer)
     fin = Array.new(z.size)
     if @function[layer] == 'sigmoid'
-      sigmoid(z)
+      fin = sigmoid(z)
     elsif @function[layer] == 'soft_max'
-      soft_max(z)
+      fin = soft_max(z)
     end
     fin
   end
@@ -351,8 +349,8 @@ class Agnet
   end
 
   def weights_change
-    @weights[0] = (@weights[0] - @hidden_weights_change * @lr * 10)
-    @weights[1] = (@weights[1] - @output_weights_change * @lr)
+    @weights[0] = (@weights[0] - @hidden_weights_change * @learning_rate * 10)
+    @weights[1] = (@weights[1] - @output_weights_change * @learning_rate)
     @weights
   end
 
