@@ -265,7 +265,7 @@ class Agnet
   end
 
   def output_layer_activation
-    @output_layer_activation = soft_max(@out_z, 1)
+    @output_layer_activation = activation_function(@out_z, 1)
   end
 
   def guess(outputs)
